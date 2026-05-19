@@ -1,0 +1,100 @@
+{
+  "categories": [
+    {
+      "slug": "shirts",
+      "name": "Shirts",
+      "description": "Casual and formal shirts",
+      "image": "/images/categories/shirts.jpg"
+    },
+    {
+      "slug": "trousers",
+      "name": "Trousers",
+      "description": "Chinos, jeans, and formal trousers",
+      "image": "/images/categories/trousers.jpg"
+    },
+    {
+      "slug": "accessories",
+      "name": "Accessories",
+      "description": "Belts, watches, and more",
+      "image": "/images/categories/accessories.jpg"
+    }
+  ],
+  "products": [
+    {
+      "slug": "blue-linen-shirt",
+      "name": "Blue Linen Shirt",
+      "price": 1499,
+      "comparePrice": 1999,
+      "currency": "INR",
+      "category": "shirts",
+      "images": ["/images/products/blue-linen-shirt.jpg"],
+      "description": "Lightweight linen shirt perfect for summer. Breathable fabric with a relaxed fit.",
+      "features": ["100% linen", "Regular fit", "Machine washable"],
+      "tags": ["featured", "bestseller"],
+      "inStock": true,
+      "variants": [
+        { "name": "Size", "options": ["S", "M", "L", "XL"] },
+        { "name": "Color", "options": ["Blue", "White", "Beige"] }
+      ]
+    },
+    {
+      "slug": "cotton-chinos",
+      "name": "Cotton Chinos",
+      "price": 1799,
+      "currency": "INR",
+      "category": "trousers",
+      "images": ["/images/products/cotton-chinos.jpg"],
+      "description": "Comfortable stretch cotton chinos with a modern slim fit.",
+      "features": ["98% cotton, 2% elastane", "Slim fit", "4 pockets"],
+      "tags": ["bestseller"],
+      "inStock": true,
+      "variants": [
+        { "name": "Size", "options": ["30", "32", "34", "36"] },
+        { "name": "Color", "options": ["Khaki", "Navy", "Olive"] }
+      ]
+    },
+    {
+      "slug": "leather-belt",
+      "name": "Genuine Leather Belt",
+      "price": 899,
+      "comparePrice": 1299,
+      "currency": "INR",
+      "category": "accessories",
+      "images": ["/images/products/leather-belt.jpg"],
+      "description": "Full-grain leather belt with brushed metal buckle.",
+      "features": ["Full-grain leather", "Brushed nickel buckle", "35mm width"],
+      "tags": ["featured", "new"],
+      "inStock": true,
+      "variants": [
+        { "name": "Size", "options": ["S", "M", "L"] }
+      ]
+    },
+    {
+      "slug": "white-oxford-shirt",
+      "name": "White Oxford Shirt",
+      "price": 1699,
+      "currency": "INR",
+      "category": "shirts",
+      "images": ["/images/products/white-oxford.jpg"],
+      "description": "Classic button-down oxford in crisp white. A wardrobe essential.",
+      "features": ["100% cotton oxford", "Button-down collar", "Chest pocket"],
+      "tags": ["new"],
+      "inStock": true,
+      "variants": [
+        { "name": "Size", "options": ["S", "M", "L", "XL", "XXL"] }
+      ]
+    },
+    {
+      "slug": "canvas-tote",
+      "name": "Canvas Tote Bag",
+      "price": 599,
+      "currency": "INR",
+      "category": "accessories",
+      "images": ["/images/products/canvas-tote.jpg"],
+      "description": "Sturdy canvas tote with reinforced handles. Perfect for everyday use.",
+      "features": ["Heavy-duty canvas", "Inner pocket", "Reinforced straps"],
+      "tags": ["featured"],
+      "inStock": true
+    }
+  ]
+}

@@ -1,0 +1,173 @@
+{
+  "businessType": "jewellery",
+  "businessName": "Lahari Collections",
+  "tagline": "Where heritage meets haute couture",
+  "mood": "Cinematic",
+  "taste": {
+    "variance": 8,
+    "motion": 7,
+    "density": 3
+  },
+  "typography": {
+    "display": "Playfair Display",
+    "body": "DM Sans",
+    "importUrl": "https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400&display=swap"
+  },
+  "color": {
+    "accent": "burgundy",
+    "accentHex": "#6B1D3A",
+    "neutral": "stone",
+    "strategy": "dark-hero-light-body"
+  },
+  "theme": {
+    "designMdId": "desert-rose",
+    "overrides": {
+      "fontDisplay": "Playfair Display",
+      "fontBody": "DM Sans",
+      "colorPrimary": "oklch(0.35 0.12 360)",
+      "colorAccent": "#6B1D3A",
+      "colorSurface": "#FAF7F5",
+      "colorBackground": "#FFFFFF",
+      "radiusBase": "0.25rem"
+    }
+  },
+  "hero": {
+    "layout": "image-bg",
+    "recipe": "ken-burns",
+    "textAnimation": "blur-fade",
+    "source": "hero-canvas",
+    "mood": "Cinematic",
+    "overlay": "gradient-bottom",
+    "content": {
+      "headline": "Lahari Collections",
+      "subtitle": "Where heritage meets haute couture",
+      "cta": {
+        "text": "Explore Collection",
+        "url": "#collections"
+      }
+    }
+  },
+  "sections": [
+    {
+      "type": "about",
+      "variant": "editorial-split",
+      "navLabel": "Story",
+      "content": {
+        "eyebrow": "The Weaver's Art",
+        "headline": "Threads that carry\ncenturies of craft",
+        "description": "Each Lahari piece begins where ancient looms meet modern silhouettes. We source directly from master weavers across India — Varanasi, Kanchipuram, Pochampally — preserving techniques passed through generations.",
+        "description2": "The result is clothing that feels like inheritance. Not fast, not fleeting. Made to be worn, loved, and remembered.",
+        "image": "/images/weaver-craft.jpg",
+        "imagePosition": "center 30%",
+        "cta": {
+          "text": "Our Craft",
+          "url": "#craft"
+        }
+      }
+    },
+    {
+      "type": "collections",
+      "variant": "banner-grid",
+      "navLabel": "Collections",
+      "content": {
+        "headline": "Explore",
+        "description": "Three lines, one philosophy — clothing that honors where it came from.",
+        "collections": [
+          {
+            "name": "Heritage Weaves",
+            "description": "Handloom sarees and dupattas from India's oldest weaving traditions",
+            "image": "/images/collection-heritage.jpg",
+            "cta": { "text": "View Collection", "url": "#" }
+          },
+          {
+            "name": "Modern Drape",
+            "description": "Contemporary silhouettes in traditional fabrics",
+            "image": "/images/collection-modern.jpg",
+            "cta": { "text": "View Collection", "url": "#" }
+          },
+          {
+            "name": "Bridal Heirloom",
+            "description": "Statement pieces crafted for once-in-a-lifetime moments",
+            "image": "/images/collection-bridal.jpg",
+            "featured": true,
+            "cta": { "text": "View Collection", "url": "#" }
+          }
+        ]
+      }
+    },
+    {
+      "type": "cta",
+      "variant": "banner",
+      "navLabel": null,
+      "content": {
+        "headline": "The Thread Between Worlds",
+        "description": "Where a grandmother's loom meets a daughter's wardrobe.",
+        "image": "/images/craft-parallax.jpg",
+        "cta": {
+          "text": "Discover the Process",
+          "url": "#about"
+        }
+      }
+    },
+    {
+      "type": "about",
+      "variant": "story",
+      "navLabel": "About",
+      "content": {
+        "headline": "The Atelier",
+        "description": "Lahari was born from a simple conviction — that India's textile heritage deserves more than museum walls. Founded in Hyderabad, we work with weaving communities across six states, turning their craft into clothing you reach for on your best days and your quietest ones.",
+        "eyebrow": "Est. 2024"
+      }
+    },
+    {
+      "type": "contact",
+      "variant": "split-info",
+      "navLabel": "Contact",
+      "content": {
+        "headline": "Begin Your Story",
+        "description": "Visit the atelier or write to us. Every Lahari journey starts with a conversation.",
+        "email": "hello@laharicollections.com",
+        "phone": "+91 91000 00000",
+        "address": "Jubilee Hills, Hyderabad",
+        "formFields": ["name", "email", "message"]
+      }
+    }
+  ],
+  "nav": {
+    "style": "sticky",
+    "items": ["Collections", "Craft", "About", "Contact"],
+    "ctaButton": "Explore Collection",
+    "ctaHref": "#collections"
+  },
+  "footer": {
+    "variant": "editorial-dark",
+    "bgColor": "var(--color-primary)",
+    "includeHours": false,
+    "includeNewsletter": true
+  },
+  "layout": {
+    "contentMaxWidth": "1440px",
+    "sectionPadding": "clamp(80px, 10vw, 140px)",
+    "borderPolicy": "none",
+    "breakpoints": {
+      "base": "0px",
+      "md": "768px",
+      "lg": "1400px"
+    }
+  },
+  "animation": {
+    "tier": "premium",
+    "sectionEntries": "stagger-scale",
+    "parallax": true,
+    "scrollRecipe": "cinematic-editorial"
+  },
+  "copy": {
+    "tonePreset": "minimal",
+    "market": "indian",
+    "antiSlop": true
+  },
+  "images": {
+    "strategy": "search-then-placeholder",
+    "seeds": ["indian textile", "handloom saree", "luxury fashion", "weaving craft", "bridal ethnic wear", "fashion atelier"]
+  }
+}

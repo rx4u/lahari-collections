@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "lahari",
+      "runtimeExecutable": "pnpm",
+      "runtimeArgs": ["dev", "--port", "3748"],
+      "port": 3748
+    }
+  ]
+}

@@ -1,0 +1,536 @@
+{
+  "root": "phase_a",
+  "meta": {
+    "app": "Template Hub",
+    "complexity": "complex",
+    "stack": "Next.js 16 + Tailwind v4 + shadcn/ui + designdotmd + Vercel",
+    "total_phases": 9,
+    "estimated_hours": 14
+  },
+  "elements": {
+    "phase_a": {
+      "type": "phase",
+      "props": {
+        "name": "Phase A: Project setup and foundation",
+        "label": "setup",
+        "effort": "30min",
+        "session": "fresh",
+        "test": "pnpm dev runs without errors. localhost:3000 renders a blank page. CLAUDE.md exists at root. Folder structure matches spec. shadcn/ui initialized with Button, Card, Badge, Accordion, Input, Textarea, Select, ScrollArea installed."
+      },
+      "children": ["task_a1", "task_a2", "task_a3", "task_a4", "task_a5"],
+      "next": "phase_b"
+    },
+    "task_a1": {
+      "type": "task",
+      "props": {
+        "name": "Initialize Next.js 16 with TypeScript, Tailwind v4, pnpm",
+        "file": "package.json",
+        "depends_on": []
+      }
+    },
+    "task_a2": {
+      "type": "task",
+      "props": {
+        "name": "Initialize shadcn/ui and install base components (Button, Card, Badge, Accordion, Tabs, Input, Textarea, Select, ScrollArea, Dialog)",
+        "file": "components.json",
+        "depends_on": ["task_a1"]
+      }
+    },
+    "task_a3": {
+      "type": "task",
+      "props": {
+        "name": "Create full folder structure: src/components/sections/, src/lib/, presets/, public/images/defaults/",
+        "file": null,
+        "depends_on": ["task_a1"]
+      }
+    },
+    "task_a4": {
+      "type": "task",
+      "props": {
+        "name": "Create CLAUDE.md at project root with full project context",
+        "file": "CLAUDE.md",
+        "depends_on": ["task_a1"]
+      }
+    },
+    "task_a5": {
+      "type": "task",
+      "props": {
+        "name": "Install framer-motion, gsap (ScrollTrigger), gray-matter (YAML parser), lucide-react. Add designdotmd as devDependency.",
+        "file": "package.json",
+        "depends_on": ["task_a2"]
+      }
+    },
+
+    "phase_b": {
+      "type": "phase",
+      "props": {
+        "name": "Phase B: Config schema, types, and design.md parser",
+        "label": "config-engine",
+        "effort": "45min",
+        "session": "fresh",
+        "test": "A sample site.config.ts with business type 'doctor' passes TypeScript validation. design-md-parser.ts parses clinic-sage design.md and returns typed DesignTokens object. theme-generator.ts outputs a CSS string with all custom properties. Console log shows all parsed tokens."
+      },
+      "children": ["task_b1", "task_b2", "task_b3", "task_b4", "task_b5"],
+      "next": "phase_c"
+    },
+    "task_b1": {
+      "type": "task",
+      "props": {
+        "name": "Define all TypeScript interfaces: SiteConfig, BusinessType, HeroStyle, SectionConfig, DesignTokens, ThemeConfig, BusinessConfig, SEOConfig",
+        "file": "src/lib/types.ts",
+        "depends_on": []
+      }
+    },
+    "task_b2": {
+      "type": "task",
+      "props": {
+        "name": "Build design-md-parser.ts: read design.md from project root, parse YAML frontmatter via gray-matter, return typed DesignTokens with colors, typography, rounded, spacing, components",
+        "file": "src/lib/design-md-parser.ts",
+        "depends_on": ["task_b1"]
+      }
+    },
+    "task_b3": {
+      "type": "task",
+      "props": {
+        "name": "Build theme-generator.ts: takes DesignTokens + optional accentColor override, outputs CSS custom properties string. Handles tertiary replacement when accentColor is set.",
+        "file": "src/lib/theme-generator.ts",
+        "depends_on": ["task_b2"]
+      }
+    },
+    "task_b4": {
+      "type": "task",
+      "props": {
+        "name": "Build font-loader.ts: reads fontFamily from DesignTokens, dynamically creates next/font/google imports, returns className and CSS variable declarations",
+        "file": "src/lib/font-loader.ts",
+        "depends_on": ["task_b2"]
+      }
+    },
+    "task_b5": {
+      "type": "task",
+      "props": {
+        "name": "Build config.ts: reads site.config.ts, validates against types, merges with preset defaults, exports resolved config. Create a sample site.config.ts for doctor type with clinic-sage theme.",
+        "file": "src/lib/config.ts",
+        "depends_on": ["task_b1"]
+      }
+    },
+
+    "phase_c": {
+      "type": "phase",
+      "props": {
+        "name": "Phase C: Layout shell, section renderer, navbar, and footer",
+        "label": "layout-shell",
+        "effort": "45min",
+        "session": "fresh",
+        "test": "localhost:3000 renders with clinic-sage theme applied (sage green colors, DM Sans font). Navbar shows business name and links. Footer shows contact info. Page body shows placeholder text for each section listed in config. Responsive at 375px and 1280px."
+      },
+      "children": ["task_c1", "task_c2", "task_c3", "task_c4", "task_c5"],
+      "next": "phase_d"
+    },
+    "task_c1": {
+      "type": "task",
+      "props": {
+        "name": "Build layout.tsx: reads config, applies theme CSS variables to html element, loads fonts, wraps children",
+        "file": "src/app/layout.tsx",
+        "depends_on": []
+      }
+    },
+    "task_c2": {
+      "type": "task",
+      "props": {
+        "name": "Build globals.css: Tailwind v4 @import, @theme block reading CSS variables, base resets",
+        "file": "src/styles/globals.css",
+        "depends_on": []
+      }
+    },
+    "task_c3": {
+      "type": "task",
+      "props": {
+        "name": "Build section-renderer.tsx: maps section type + variant to component, renders sections[] array from config. For now, renders placeholder div with section type name for unbuilt sections.",
+        "file": "src/lib/section-renderer.tsx",
+        "depends_on": []
+      }
+    },
+    "task_c4": {
+      "type": "task",
+      "props": {
+        "name": "Build Navbar with 4 variants: static, floating, transparent, hamburger-only. Reads business name and section anchors from config.",
+        "file": "src/components/layout/Navbar/",
+        "depends_on": ["task_c1"]
+      }
+    },
+    "task_c5": {
+      "type": "task",
+      "props": {
+        "name": "Build Footer with 4 variants: multi-column, simple, minimal, mega-footer. Reads business info, social links, hours from config.",
+        "file": "src/components/layout/Footer/",
+        "depends_on": ["task_c1"]
+      }
+    },
+
+    "phase_d": {
+      "type": "phase",
+      "props": {
+        "name": "Phase D: Hero section (6 variants)",
+        "label": "hero",
+        "effort": "90min",
+        "session": "fresh",
+        "test": "All 6 hero variants render correctly with clinic-sage theme. Switching hero.variant in site.config.ts changes the hero. Each variant is responsive at 375px, 768px, 1280px. CTA buttons use tertiary color. Images display correctly."
+      },
+      "children": ["task_d1", "task_d2", "task_d3", "task_d4", "task_d5", "task_d6"],
+      "next": "phase_e"
+    },
+    "task_d1": {
+      "type": "task",
+      "props": {
+        "name": "Build HeroCentered: large headline centered, subtitle, 1-2 CTA buttons below. Clean, authoritative.",
+        "file": "src/components/sections/Hero/HeroCentered.tsx",
+        "depends_on": []
+      }
+    },
+    "task_d2": {
+      "type": "task",
+      "props": {
+        "name": "Build HeroSplitImage: text on left (headline, subtitle, CTA), image on right. Stacks on mobile.",
+        "file": "src/components/sections/Hero/HeroSplitImage.tsx",
+        "depends_on": []
+      }
+    },
+    "task_d3": {
+      "type": "task",
+      "props": {
+        "name": "Build HeroImageBg: full-bleed background image with dark overlay, white text, CTA.",
+        "file": "src/components/sections/Hero/HeroImageBg.tsx",
+        "depends_on": []
+      }
+    },
+    "task_d4": {
+      "type": "task",
+      "props": {
+        "name": "Build HeroVideoBg: auto-playing muted looping video background with text overlay and CTA.",
+        "file": "src/components/sections/Hero/HeroVideoBg.tsx",
+        "depends_on": []
+      }
+    },
+    "task_d5": {
+      "type": "task",
+      "props": {
+        "name": "Build HeroGradient: bold gradient background using primary/tertiary colors, large display typography.",
+        "file": "src/components/sections/Hero/HeroGradient.tsx",
+        "depends_on": []
+      }
+    },
+    "task_d6": {
+      "type": "task",
+      "props": {
+        "name": "Build HeroMinimal: just headline, subtitle, CTA on clean background. Maximum whitespace.",
+        "file": "src/components/sections/Hero/HeroMinimal.tsx",
+        "depends_on": []
+      }
+    },
+
+    "phase_e": {
+      "type": "phase",
+      "props": {
+        "name": "Phase E: Core sections batch 1 (Services, About, Testimonials, Gallery, FAQ)",
+        "label": "sections-batch-1",
+        "effort": "120min",
+        "session": "fresh",
+        "test": "All 5 section types render with at least 2 variants each. Sections use CSS variables from design.md, not hardcoded colors. Content comes from sections[].content in config. Framer Motion fade-up animation triggers on scroll into viewport."
+      },
+      "children": ["task_e1", "task_e2", "task_e3", "task_e4", "task_e5", "task_e6"],
+      "next": "phase_f"
+    },
+    "task_e1": {
+      "type": "task",
+      "props": {
+        "name": "Build Services section: grid-3 and icon-list variants. Service cards with icon, title, description.",
+        "file": "src/components/sections/Services/",
+        "depends_on": []
+      }
+    },
+    "task_e2": {
+      "type": "task",
+      "props": {
+        "name": "Build About section: story and split-image variants. Headline, description, image, highlights list.",
+        "file": "src/components/sections/About/",
+        "depends_on": []
+      }
+    },
+    "task_e3": {
+      "type": "task",
+      "props": {
+        "name": "Build Testimonials section: carousel and simple-grid variants. Name, quote text, rating stars.",
+        "file": "src/components/sections/Testimonials/",
+        "depends_on": []
+      }
+    },
+    "task_e4": {
+      "type": "task",
+      "props": {
+        "name": "Build Gallery section: grid-3 and masonry variants. Images from config, lightbox on click.",
+        "file": "src/components/sections/Gallery/",
+        "depends_on": []
+      }
+    },
+    "task_e5": {
+      "type": "task",
+      "props": {
+        "name": "Build FAQ section: accordion and two-column variants using shadcn Accordion.",
+        "file": "src/components/sections/FAQ/",
+        "depends_on": []
+      }
+    },
+    "task_e6": {
+      "type": "task",
+      "props": {
+        "name": "Add animation tier system: SectionWrapper with Framer Motion (subtle tier), GSAP ScrollTrigger integration (standard tier), hero-canvas hook (premium tier). Each preset specifies its animationTier. Sections check tier and apply appropriate motion.",
+        "file": "src/components/sections/SectionWrapper.tsx",
+        "depends_on": []
+      }
+    },
+
+    "phase_f": {
+      "type": "phase",
+      "props": {
+        "name": "Phase F: Core sections batch 2 (Contact, CTA, Stats, Hours, Location, Team, Pricing, Trust, Announcement)",
+        "label": "sections-batch-2",
+        "effort": "120min",
+        "session": "fresh",
+        "test": "All 9 section types render with at least 1 variant each. Contact form posts to a configurable endpoint or mailto link. Google Maps embed renders from config mapUrl. Stats counter animates numbers on scroll."
+      },
+      "children": ["task_f1", "task_f2", "task_f3", "task_f4", "task_f5", "task_f6", "task_f7", "task_f8", "task_f9"],
+      "next": "phase_g"
+    },
+    "task_f1": {
+      "type": "task",
+      "props": {
+        "name": "Build Contact section: form-map variant (contact form + Google Maps embed) and form-only variant.",
+        "file": "src/components/sections/Contact/",
+        "depends_on": []
+      }
+    },
+    "task_f2": {
+      "type": "task",
+      "props": {
+        "name": "Build CTA section: banner and centered variants. Headline, subtext, button.",
+        "file": "src/components/sections/CTA/",
+        "depends_on": []
+      }
+    },
+    "task_f3": {
+      "type": "task",
+      "props": {
+        "name": "Build Stats section: counter-animated variant. Numbers animate from 0 to value on scroll into view.",
+        "file": "src/components/sections/Stats/",
+        "depends_on": []
+      }
+    },
+    "task_f4": {
+      "type": "task",
+      "props": {
+        "name": "Build Hours section: card variant showing weekly hours table from config.",
+        "file": "src/components/sections/Hours/",
+        "depends_on": []
+      }
+    },
+    "task_f5": {
+      "type": "task",
+      "props": {
+        "name": "Build Location section: map-embed variant with Google Maps iframe and address card.",
+        "file": "src/components/sections/Location/",
+        "depends_on": []
+      }
+    },
+    "task_f6": {
+      "type": "task",
+      "props": {
+        "name": "Build Team section: grid variant with photo, name, role, optional bio.",
+        "file": "src/components/sections/Team/",
+        "depends_on": []
+      }
+    },
+    "task_f7": {
+      "type": "task",
+      "props": {
+        "name": "Build Pricing section: cards-3 variant with plan name, price, features list, CTA button.",
+        "file": "src/components/sections/Pricing/",
+        "depends_on": []
+      }
+    },
+    "task_f8": {
+      "type": "task",
+      "props": {
+        "name": "Build Trust section: logo-cloud variant showing certification/partner logos.",
+        "file": "src/components/sections/Trust/",
+        "depends_on": []
+      }
+    },
+    "task_f9": {
+      "type": "task",
+      "props": {
+        "name": "Build Announcement section: top-bar variant (dismissible banner above navbar).",
+        "file": "src/components/sections/Announcement/",
+        "depends_on": []
+      }
+    },
+
+    "phase_g": {
+      "type": "phase",
+      "props": {
+        "name": "Phase G: Business type presets and sample configs",
+        "label": "presets",
+        "effort": "60min",
+        "session": "fresh",
+        "test": "4 preset files exist (doctor, restaurant, salon, local). Each produces a valid site.config.ts. npx designdotmd add [preset-default-theme] works for each. Each preset renders a complete site with all sections populated with realistic sample content. Theme swap via changing designMd in config produces a visually different but structurally identical site."
+      },
+      "children": ["task_g1", "task_g2", "task_g3", "task_g4", "task_g5", "task_g6"],
+      "next": "phase_h"
+    },
+    "task_g1": {
+      "type": "task",
+      "props": {
+        "name": "Build doctor preset: clinic-sage theme, split-image hero, sections order (hero, about, services, testimonials, hours, contact, faq, footer), sample content for a pediatric clinic.",
+        "file": "presets/doctor.ts",
+        "depends_on": []
+      }
+    },
+    "task_g2": {
+      "type": "task",
+      "props": {
+        "name": "Build restaurant preset: coffee-roast theme, image-bg hero, sections (hero, about, gallery, testimonials, hours, location, cta, footer), sample content for an Indian restaurant.",
+        "file": "presets/restaurant.ts",
+        "depends_on": []
+      }
+    },
+    "task_g3": {
+      "type": "task",
+      "props": {
+        "name": "Build salon preset: skincare-matte theme, split-image hero, sections (hero, services, gallery, team, testimonials, contact, footer), sample content for a beauty salon.",
+        "file": "presets/salon.ts",
+        "depends_on": []
+      }
+    },
+    "task_g4": {
+      "type": "task",
+      "props": {
+        "name": "Build generic local business preset: notion-beige theme, centered hero, sections (hero, services, about, testimonials, contact, footer), sample content.",
+        "file": "presets/local.ts",
+        "depends_on": []
+      }
+    },
+    "task_g5": {
+      "type": "task",
+      "props": {
+        "name": "Add compatibleThemes and compatibleHeroes arrays to each preset for remix support.",
+        "file": null,
+        "depends_on": ["task_g1", "task_g2", "task_g3", "task_g4"]
+      }
+    },
+    "task_g6": {
+      "type": "task",
+      "props": {
+        "name": "Add stock default images to public/images/defaults/ for each business type (3-5 royalty-free images each from Unsplash).",
+        "file": "public/images/defaults/",
+        "depends_on": []
+      }
+    },
+
+    "phase_h": {
+      "type": "phase",
+      "props": {
+        "name": "Phase H: Theme cross-testing and responsive polish",
+        "label": "polish",
+        "effort": "60min",
+        "session": "fresh",
+        "test": "Doctor preset renders correctly with ALL 6 of its compatible themes (clinic-sage, pharma-clean, wellness-coral, therapy-room, notion-beige, swiss-grid). Each theme swap is only npx designdotmd add [id] + rebuild. No visual breakage on any theme. All sections responsive at 375px. No hardcoded colors found in any component (grep for # in tsx files returns zero matches in section components)."
+      },
+      "children": ["task_h1", "task_h2", "task_h3", "task_h4"],
+      "next": "phase_i"
+    },
+    "task_h1": {
+      "type": "task",
+      "props": {
+        "name": "Cross-test doctor preset with all 6 compatible themes. Fix any color contrast issues or layout breaks.",
+        "file": null,
+        "depends_on": []
+      }
+    },
+    "task_h2": {
+      "type": "task",
+      "props": {
+        "name": "Cross-test restaurant and salon presets with their compatible themes.",
+        "file": null,
+        "depends_on": ["task_h1"]
+      }
+    },
+    "task_h3": {
+      "type": "task",
+      "props": {
+        "name": "Mobile responsive audit: test all 4 presets at 375px. Fix stacking, font sizes, padding, touch targets.",
+        "file": null,
+        "depends_on": ["task_h2"]
+      }
+    },
+    "task_h4": {
+      "type": "task",
+      "props": {
+        "name": "Run grep for hardcoded colors (hex, rgb, hsl) in all section components. Replace with CSS variables. Zero tolerance.",
+        "file": null,
+        "depends_on": ["task_h3"]
+      }
+    },
+
+    "phase_i": {
+      "type": "phase",
+      "props": {
+        "name": "Phase I: SEO, static export, deploy, and documentation",
+        "label": "deploy",
+        "effort": "45min",
+        "session": "fresh",
+        "test": "pnpm build produces static HTML in out/ directory. vercel --prod deploys successfully. Live URL renders the doctor preset with clinic-sage theme. Page source has correct meta title, description, og:image. Lighthouse SEO score > 90. README.md documents: how to create a new client site, how to swap themes, how to add sections, how to deploy."
+      },
+      "children": ["task_i1", "task_i2", "task_i3", "task_i4", "task_i5"],
+      "next": null
+    },
+    "task_i1": {
+      "type": "task",
+      "props": {
+        "name": "Add SEO metadata generation: read seo config, generate <head> tags in layout.tsx (title, description, og:title, og:description, og:image, canonical).",
+        "file": "src/app/layout.tsx",
+        "depends_on": []
+      }
+    },
+    "task_i2": {
+      "type": "task",
+      "props": {
+        "name": "Configure next.config.ts for static export: output = 'export'. Test build produces out/ directory with all HTML files.",
+        "file": "next.config.ts",
+        "depends_on": []
+      }
+    },
+    "task_i3": {
+      "type": "task",
+      "props": {
+        "name": "Deploy doctor preset to Vercel. Verify live URL works, theme renders, all sections load, images display.",
+        "file": null,
+        "depends_on": ["task_i2"]
+      }
+    },
+    "task_i4": {
+      "type": "task",
+      "props": {
+        "name": "Write README.md: project overview, quick start (clone, add theme, edit config, deploy), section reference, theme reference, remix commands.",
+        "file": "README.md",
+        "depends_on": []
+      }
+    },
+    "task_i5": {
+      "type": "task",
+      "props": {
+        "name": "Create a QUICKSTART.md with the exact 5-step workflow: 1) clone, 2) npx designdotmd add [id], 3) edit site.config.ts, 4) pnpm install, 5) vercel --prod.",
+        "file": "QUICKSTART.md",
+        "depends_on": ["task_i4"]
+      }
+    }
+  }
+}

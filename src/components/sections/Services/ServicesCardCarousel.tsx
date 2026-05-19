@@ -1,0 +1,61 @@
+"use client";
+
+import { icons } from "lucide-react";
+
+interface ServicesCardCarouselProps {
+  content: {
+    headline: string;
+    description?: string;
+    eyebrow?: string;
+    subtitle?: string;
+  items: Array<{
+      title: string;
+      description: string;
+    eyebrow?: string;
+    subtitle?: string;
+    icon: string;
+      price?: string;
+    }>;
+  };
+  eyebrow?: string;
+  subtitle?: string;
+}
+
+export default function ServicesCardCarousel({ content, eyebrow, subtitle }: ServicesCardCarouselProps) {
+  return (
+    <section id="services" className="section-y">
+      <div className="page-container">
+        <div className="mb-12 max-w-2xl">
+          <h2 className="font-[family-name:var(--font-display)] text-3xl font-bold text-foreground">
+            {content.headline}
+          </h2>
+          {content.description && (
+            <p className="mt-4 text-muted-foreground">{content.description}</p>
+          )}
+        </div>
+        <div
+          className="flex gap-6 overflow-x-auto pb-4 snap-x snap-mandatory scrollbar-thin"
+          style={{ scrollSnapType: "x mandatory" }}
+        >
+          {content.items.map((item, index) => {
+            const LucideIcon = icons[item.icon as keyof typeof icons];
+            return (
+              <div
+                key={index}
+                className="min-w-[280px] max-w-[320px] flex-shrink-0 snap-start rounded-[var(--radius-lg)] border border-border bg-card p-6"
+                style={{ scrollSnapAlign: "start" }}
+              >
+                {LucideIcon && <LucideIcon className="mb-4 size-6 text-primary" />}
+                <h3 className="font-medium text-foreground">{item.title}</h3>
+                <p className="mt-2 text-sm text-muted-foreground">{item.description}</p>
+                {item.price && (
+                  <p className="mt-4 text-lg font-semibold text-primary">{item.price}</p>
+                )}
+              </div>
+            );
+          })}
+        </div>
+      </div>
+    </section>
+  );
+}

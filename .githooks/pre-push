@@ -1,0 +1,31 @@
+#!/usr/bin/env bash
+#
+# template-hub pre-push hook.
+#
+# Runs the static validator suite + the scenario smoke set before any push.
+# Total runtime: ~3-5s. Designed to be fast enough that nobody disables it.
+#
+# To activate this hook locally, run once per clone:
+#   git config core.hooksPath .githooks
+#
+# To bypass intentionally (do this rarely, with a reason):
+#   git push --no-verify
+#
+# What this catches that a CI check can't:
+#   - Local typos in section.content keys (section-shape-scanner)
+#   - Dead nav anchors before the push lands in a preview deploy
+#   - Empty required arrays (gallery.images, services.items, ...)
+#   - Variant-required field drift (cta:countdown without deadline, etc.)
+#   - Dark-mode detection / anchor coverage drift across 6 (preset, theme) scenarios
+
+set -e
+
+cd "$(git rev-parse --show-toplevel)"
+
+echo "→ pre-push: running validator tests"
+pnpm test
+
+echo "→ pre-push: running scenario smoke set"
+pnpm scenarios:smoke
+
+echo "→ pre-push: OK"

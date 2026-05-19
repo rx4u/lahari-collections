@@ -1,0 +1,135 @@
+{
+  "business": {
+    "type": "bakery",
+    "name": "Test Bakery",
+    "tagline": "",
+    "description": "",
+    "phone": "+919876543210",
+    "email": "",
+    "address": "Banjara Hills",
+    "city": "Hyderabad",
+    "state": "",
+    "pincode": "",
+    "mapUrl": "https://www.google.com/maps/search/?api=1&query=Banjara%20Hills%2C%20Hyderabad",
+    "socialLinks": {
+      "whatsapp": "https://wa.me/919876543210"
+    },
+    "hours": {
+      "Monday": {
+        "open": "08:00",
+        "close": "21:00"
+      },
+      "Tuesday": {
+        "open": "08:00",
+        "close": "21:00"
+      },
+      "Wednesday": {
+        "open": "08:00",
+        "close": "21:00"
+      },
+      "Thursday": {
+        "open": "08:00",
+        "close": "21:00"
+      },
+      "Friday": {
+        "open": "08:00",
+        "close": "21:00"
+      },
+      "Saturday": {
+        "open": "08:00",
+        "close": "21:00"
+      },
+      "Sunday": {
+        "open": "08:00",
+        "close": "21:00"
+      }
+    },
+    "logo": "https://ui-avatars.com/api/?name=Test%20Bakery&size=200&background=0d9488&color=fff&bold=true&format=svg",
+    "favicon": "https://ui-avatars.com/api/?name=T&size=32&background=0d9488&color=fff&bold=true&format=svg"
+  },
+  "theme": {
+    "designMd": "linen",
+    "accentColor": "#0d9488"
+  },
+  "layout": {
+    "type": "single-page"
+  },
+  "hero": {
+    "style": "image-bg",
+    "headline": "",
+    "subheadline": "",
+    "cta": {
+      "text": "Book Now",
+      "url": "https://wa.me/919876543210",
+      "variant": "primary"
+    },
+    "image": "https://picsum.photos/seed/test-bakery-hero/1920/1080"
+  },
+  "sections": [
+    {
+      "type": "about",
+      "variant": "text-image",
+      "navLabel": "About",
+      "content": {
+        "headline": "",
+        "description": "",
+        "image": "https://picsum.photos/seed/test-bakery-about/800/600",
+        "stats": []
+      }
+    },
+    {
+      "type": "services",
+      "variant": "grid-3",
+      "navLabel": "Services",
+      "content": {
+        "headline": "Services",
+        "description": "",
+        "items": []
+      }
+    },
+    {
+      "type": "testimonials",
+      "variant": "carousel",
+      "navLabel": null,
+      "content": {
+        "headline": "What Our Customers Say",
+        "items": []
+      }
+    },
+    {
+      "type": "contact",
+      "variant": "split-map",
+      "navLabel": "Contact",
+      "content": {
+        "headline": "Get in Touch",
+        "phone": "+919876543210",
+        "address": "Banjara Hills",
+        "city": "Hyderabad",
+        "whatsapp": "https://wa.me/919876543210"
+      }
+    }
+  ],
+  "seo": {
+    "title": "Test Bakery | Bakery in Hyderabad",
+    "description": "",
+    "ogImage": "https://picsum.photos/seed/test-bakery-hero/1920/1080",
+    "keywords": [
+      "Test Bakery",
+      "bakery",
+      "Hyderabad",
+      "cakes",
+      "pastry",
+      "baked goods"
+    ],
+    "locale": "en_IN"
+  },
+  "animationTier": "standard",
+  "nav": {
+    "style": "sticky",
+    "ctaButton": "Book Now",
+    "ctaHref": "https://wa.me/919876543210"
+  },
+  "footer": {
+    "variant": "warm-simple"
+  }
+}

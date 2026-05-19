@@ -1,0 +1,194 @@
+import type { SiteConfig } from "./src/lib/types";
+
+const config: SiteConfig = {
+  business: {
+    type: "doctor",
+    name: "Dr. Ramesh Pediatric Clinic",
+    tagline: "Compassionate care for your little ones",
+    description:
+      "Trusted pediatric care in Jubilee Hills, Hyderabad. Dr. Ramesh brings 15 years of experience in child healthcare, vaccinations, and developmental assessments.",
+    phone: "+91 98765 43210",
+    email: "contact@drrameshclinic.com",
+    address: "304, Jubilee Towers, Road No. 36, Jubilee Hills",
+    city: "Hyderabad",
+    state: "Telangana",
+    pincode: "500033",
+    mapUrl: "https://maps.google.com/?q=17.4326,78.4071",
+    socialLinks: {
+      instagram: "https://instagram.com/drrameshclinic",
+      facebook: "https://facebook.com/drrameshclinic",
+      whatsapp: "https://wa.me/919876543210",
+    },
+    hours: {
+      Monday: { open: "09:00", close: "18:00" },
+      Tuesday: { open: "09:00", close: "18:00" },
+      Wednesday: { open: "09:00", close: "18:00" },
+      Thursday: { open: "09:00", close: "18:00" },
+      Friday: { open: "09:00", close: "18:00" },
+      Saturday: { open: "09:00", close: "14:00" },
+      Sunday: "closed",
+    },
+    logo: "/images/defaults/doctor/logo.svg",
+  },
+
+  theme: {
+    designMd: "clinic-sage",
+    mode: "light",
+  },
+
+  layout: {
+    type: "single-page",
+  },
+
+  hero: {
+    style: "split-image",
+    headline: "Gentle, expert pediatric care your family can trust",
+    subheadline:
+      "15 years of experience in child healthcare. Now accepting new patients at our Jubilee Hills clinic.",
+    cta: { text: "Book Appointment", url: "#contact", variant: "primary" },
+    secondaryCta: { text: "Our Services", url: "#services" },
+    image: "/images/defaults/doctor/hero.jpg",
+  },
+
+  sections: [
+    {
+      type: "services",
+      variant: "icon-grid",
+      content: {
+        headline: "Our Services",
+        description: "Comprehensive pediatric care under one roof",
+        items: [
+          {
+            title: "General Pediatrics",
+            description:
+              "Routine check-ups, growth monitoring, and preventive care for children of all ages.",
+            icon: "stethoscope",
+          },
+          {
+            title: "Vaccinations",
+            description:
+              "Complete immunization schedules following IAP guidelines. Safe and timely.",
+            icon: "syringe",
+          },
+          {
+            title: "Developmental Assessment",
+            description:
+              "Milestone tracking, early intervention referrals, and developmental screening.",
+            icon: "brain",
+          },
+          {
+            title: "Allergy & Asthma",
+            description:
+              "Diagnosis and management of childhood allergies, asthma, and respiratory conditions.",
+            icon: "wind",
+          },
+          {
+            title: "Nutrition Counseling",
+            description:
+              "Personalized diet plans for picky eaters, underweight, and overweight children.",
+            icon: "apple",
+          },
+          {
+            title: "Emergency Care",
+            description:
+              "Urgent pediatric care for fevers, injuries, and acute illness. Walk-ins welcome.",
+            icon: "alert-circle",
+          },
+        ],
+      },
+    },
+    {
+      type: "about",
+      variant: "split-content",
+      content: {
+        headline: "About Dr. Ramesh",
+        description:
+          "Dr. Ramesh Kumar is a board-certified pediatrician with over 15 years of experience. A graduate of Osmania Medical College, he completed his MD in Pediatrics at NIMS and has been serving families in Hyderabad since 2011.",
+        image: "/images/defaults/doctor/about.jpg",
+        stats: [
+          { value: "15+", label: "Years Experience" },
+          { value: "10,000+", label: "Patients Treated" },
+          { value: "4.9", label: "Google Rating" },
+        ],
+      },
+    },
+    {
+      type: "testimonials",
+      variant: "carousel",
+      content: {
+        headline: "What Parents Say",
+        items: [
+          {
+            name: "Priya Sharma",
+            text: "Dr. Ramesh is incredibly patient with kids. My daughter actually looks forward to her check-ups!",
+            rating: 5,
+          },
+          {
+            name: "Vikram Reddy",
+            text: "The best pediatrician in Hyderabad. He explains everything clearly and never rushes.",
+            rating: 5,
+          },
+          {
+            name: "Anita Desai",
+            text: "We've been bringing our children here for 8 years. Trustworthy, kind, and thorough.",
+            rating: 5,
+          },
+        ],
+      },
+    },
+    {
+      type: "faq",
+      variant: "accordion",
+      content: {
+        headline: "Frequently Asked Questions",
+        items: [
+          {
+            question: "What age group do you treat?",
+            answer:
+              "We provide care for children from newborn to 18 years of age.",
+          },
+          {
+            question: "Do you accept walk-ins?",
+            answer:
+              "Yes, we accept walk-ins for urgent care. For regular consultations, we recommend booking an appointment.",
+          },
+          {
+            question: "What insurance plans do you accept?",
+            answer:
+              "We accept most major health insurance plans. Please call our office to verify your specific plan.",
+          },
+          {
+            question: "How long is a typical consultation?",
+            answer:
+              "A routine check-up takes about 20-30 minutes. First visits or complex cases may take longer.",
+          },
+        ],
+      },
+    },
+    {
+      type: "contact",
+      variant: "split-map",
+      content: {
+        headline: "Visit Us",
+        description:
+          "Located in the heart of Jubilee Hills, easily accessible from all parts of Hyderabad.",
+      },
+    },
+  ],
+
+  seo: {
+    title: "Dr. Ramesh Pediatric Clinic | Best Pediatrician in Jubilee Hills, Hyderabad",
+    description:
+      "Trusted pediatric care in Jubilee Hills, Hyderabad. Dr. Ramesh Kumar - 15 years experience. Vaccinations, developmental assessments, allergy care. Book appointment today.",
+    keywords: [
+      "pediatrician hyderabad",
+      "child doctor jubilee hills",
+      "best pediatrician hyderabad",
+      "vaccination clinic hyderabad",
+    ],
+  },
+
+  animationTier: "subtle",
+};
+
+export default config;

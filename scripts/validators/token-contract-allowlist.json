@@ -1,0 +1,4 @@
+{
+  "_doc": "Grandfathered token-contract violations. Each entry suppresses one finding by file:line:rule. Remove entries as the underlying violations are migrated. See docs/design-token-contract.md.",
+  "entries": []
+}

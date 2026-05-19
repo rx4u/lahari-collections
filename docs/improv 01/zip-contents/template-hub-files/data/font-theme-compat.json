@@ -1,0 +1,94 @@
+{
+  "fonts": {
+    "Instrument Serif": {
+      "weights": [400],
+      "source": "google",
+      "variable": false,
+      "note": "Italic variant available but only at 400"
+    },
+    "DM Serif Display": {
+      "weights": [400],
+      "source": "google",
+      "variable": false
+    },
+    "Fraunces": {
+      "weights": [100, 200, 300, 400, 500, 600, 700, 800, 900],
+      "source": "google",
+      "variable": true
+    },
+    "Clash Display": {
+      "weights": [200, 300, 400, 500, 600, 700],
+      "source": "fontshare",
+      "variable": true
+    },
+    "Plus Jakarta Sans": {
+      "weights": [200, 300, 400, 500, 600, 700, 800],
+      "source": "google",
+      "variable": true
+    },
+    "DM Sans": {
+      "weights": [100, 200, 300, 400, 500, 600, 700, 800, 900, 1000],
+      "source": "google",
+      "variable": true
+    },
+    "Outfit": {
+      "weights": [100, 200, 300, 400, 500, 600, 700, 800, 900],
+      "source": "google",
+      "variable": true
+    },
+    "Satoshi": {
+      "weights": [300, 400, 500, 600, 700, 800, 900],
+      "source": "fontshare",
+      "variable": true
+    },
+    "Public Sans": {
+      "weights": [100, 200, 300, 400, 500, 600, 700, 800, 900],
+      "source": "google",
+      "variable": true
+    },
+    "Space Grotesk": {
+      "weights": [300, 400, 500, 600, 700],
+      "source": "google",
+      "variable": true
+    },
+    "Jost": {
+      "weights": [100, 200, 300, 400, 500, 600, 700, 800, 900],
+      "source": "google",
+      "variable": true
+    },
+    "Italiana": {
+      "weights": [400],
+      "source": "google",
+      "variable": false
+    },
+    "Inter": {
+      "weights": [100, 200, 300, 400, 500, 600, 700, 800, 900],
+      "source": "google",
+      "variable": true,
+      "note": "Allowed for body text only. Banned as display/heading font."
+    }
+  },
+  "tailwindToHex": {
+    "amber-600": "#d97706",
+    "amber-700": "#b45309",
+    "teal-500": "#14b8a6",
+    "teal-600": "#0d9488",
+    "pink-400": "#f472b6",
+    "orange-600": "#ea580c",
+    "emerald-600": "#059669",
+    "emerald-700": "#047857",
+    "slate-700": "#334155",
+    "rose-400": "#fb7185",
+    "rose-600": "#e11d48",
+    "indigo-600": "#4f46e5",
+    "stone-700": "#44403c",
+    "blue-600": "#2563eb",
+    "zinc-900": "#18181b"
+  },
+  "moodThemeKeywords": {
+    "Calm": ["minimal", "soft", "calm", "clean", "reading", "corporate", "cool"],
+    "Balanced": ["warm", "editorial", "serif", "organic", "food"],
+    "Bold": ["bold", "dark", "brutalist", "high-contrast", "gameplay"],
+    "Cinematic": ["dark", "bold", "dramatic", "mono", "technical"]
+  }
+}
