@@ -1,4 +1,8 @@
-import { Mail, MapPin, Phone } from "lucide-react";
+/* Hallmark · macrostructure: Photographic · genre: editorial
+ * footer: Ft6 Letter close · theme: Desert Rose
+ */
+"use client";
+
 import type { BusinessConfig, FooterConfig, SectionConfig } from "@/lib/types";
 
 interface Props {
@@ -8,68 +12,126 @@ interface Props {
 }
 
 const SOCIAL_LABELS: Record<string, string> = {
-  instagram: "Instagram", facebook: "Facebook", twitter: "Twitter",
-  youtube: "YouTube", linkedin: "LinkedIn", whatsapp: "WhatsApp",
+  instagram: "Instagram",
+  whatsapp: "WhatsApp",
 };
 
-export default function FooterEditorialDark({ business, sections, footer }: Props) {
-  const navLinks = sections
-    .filter((s) => s.navLabel !== null)
-    .map((s) => ({ label: s.navLabel || s.type, href: `#${s.type}` }));
-
+export default function FooterEditorialDark({ business, footer }: Props) {
   const socialEntries = business.socialLinks
     ? Object.entries(business.socialLinks).filter(([, url]) => url)
     : [];
 
   return (
-    <footer style={{ backgroundColor: footer?.bgColor ?? "var(--color-forced-dark)" }} className="text-[var(--color-on-forced-dark)]">
-      <div className="page-container pt-16 pb-8">
-        <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-3 mb-16">
-          <div className="lg:col-span-1">
-            <p className="font-heading text-3xl font-bold leading-tight text-[var(--color-on-forced-dark)]">{business.name}</p>
-            <p className="mt-4 text-sm text-[var(--color-on-forced-dark-muted)] leading-relaxed max-w-xs">{business.description}</p>
-          </div>
-
-          <div>
-            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[var(--color-on-forced-dark-muted)] mb-5">Pages</p>
-            <nav className="flex flex-col gap-3">
-              {navLinks.map((link) => (
-                <a key={link.href} href={link.href}
-                  className="text-sm text-[var(--color-on-forced-dark-muted)] transition-colors hover:text-[var(--color-on-forced-dark)] capitalize">
-                  {link.label}
-                </a>
-              ))}
-            </nav>
-          </div>
-
-          <div>
-            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[var(--color-on-forced-dark-muted)] mb-5">Contact</p>
-            <div className="flex flex-col gap-3">
-              <a href={`tel:${business.phone}`}
-                className="flex items-center gap-2 text-sm text-[var(--color-on-forced-dark-muted)] hover:text-[var(--color-on-forced-dark)] transition-colors">
-                <Phone className="h-4 w-4 shrink-0" />{business.phone}
-              </a>
-              <a href={`mailto:${business.email}`}
-                className="flex items-center gap-2 text-sm text-[var(--color-on-forced-dark-muted)] hover:text-[var(--color-on-forced-dark)] transition-colors">
-                <Mail className="h-4 w-4 shrink-0" />{business.email}
-              </a>
-              <p className="flex items-start gap-2 text-sm text-[var(--color-on-forced-dark-muted)]">
-                <MapPin className="h-4 w-4 shrink-0 mt-0.5" />
-                <span>{business.address}, {business.city}</span>
-              </p>
-            </div>
-          </div>
+    <footer
+      style={{
+        backgroundColor: footer?.bgColor ?? "var(--color-primary)",
+        color: "var(--color-on-primary)",
+      }}
+    >
+      <div
+        style={{
+          maxWidth: "1100px",
+          margin: "0 auto",
+          padding: "clamp(5rem, 10vw, 8rem) clamp(1.5rem, 6vw, 4rem) clamp(2.5rem, 4vw, 3rem)",
+        }}
+      >
+        {/* Letter close — single column, off-axis */}
+        <div style={{ maxWidth: "560px" }}>
+          <p
+            style={{
+              fontFamily: "var(--font-sans)",
+              fontSize: "0.7rem",
+              letterSpacing: "0.22em",
+              textTransform: "uppercase",
+              opacity: 0.55,
+              margin: 0,
+            }}
+          >
+            With love
+          </p>
+          <p
+            style={{
+              fontFamily: "var(--font-display)",
+              fontSize: "clamp(2rem, 3.6vw, 3.25rem)",
+              lineHeight: 1.1,
+              letterSpacing: "-0.01em",
+              fontWeight: 400,
+              margin: "1.25rem 0 0",
+            }}
+          >
+            {business.name}
+          </p>
+          <p
+            style={{
+              fontFamily: "var(--font-sans)",
+              fontSize: "0.95rem",
+              lineHeight: 1.7,
+              opacity: 0.75,
+              margin: "1.5rem 0 0",
+              fontWeight: 300,
+            }}
+          >
+            {business.address}, {business.city} {business.pincode}
+          </p>
+          <p
+            style={{
+              fontFamily: "var(--font-sans)",
+              fontSize: "0.95rem",
+              lineHeight: 1.7,
+              opacity: 0.6,
+              margin: "0.25rem 0 0",
+              fontWeight: 300,
+              fontStyle: "italic",
+            }}
+          >
+            By appointment, six days a week.
+          </p>
         </div>
 
-        <div className="flex flex-col sm:flex-row items-center justify-between gap-4 border-t border-white/10 pt-8">
-          <p className="text-xs text-[var(--color-on-forced-dark-muted)]">
-            &copy; {new Date().getFullYear()} {business.name}. All rights reserved.
+        {/* Hairline + sign-off row */}
+        <div
+          style={{
+            marginTop: "clamp(4rem, 8vw, 6rem)",
+            paddingTop: "1.5rem",
+            borderTop: "1px solid color-mix(in oklch, var(--color-on-primary) 18%, transparent)",
+            display: "flex",
+            flexWrap: "wrap",
+            alignItems: "baseline",
+            justifyContent: "space-between",
+            gap: "1rem",
+          }}
+        >
+          <p
+            style={{
+              fontFamily: "var(--font-sans)",
+              fontSize: "0.7rem",
+              letterSpacing: "0.14em",
+              opacity: 0.5,
+              margin: 0,
+            }}
+          >
+            © {new Date().getFullYear()} {business.name}
           </p>
           {socialEntries.length > 0 && (
-            <div className="flex gap-5">
+            <div style={{ display: "flex", gap: "1.5rem" }}>
               {socialEntries.map(([key, url]) => (
-                <a key={key} href={url} target="_blank" rel="noopener noreferrer"
-                  className="text-xs text-[var(--color-on-forced-dark-muted)] transition-colors hover:text-[var(--color-on-forced-dark)]">
+                <a
+                  key={key}
+                  href={url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{
+                    fontFamily: "var(--font-sans)",
+                    fontSize: "0.75rem",
+                    letterSpacing: "0.14em",
+                    color: "var(--color-on-primary)",
+                    opacity: 0.6,
+                    textDecoration: "none",
+                    transition: "opacity 200ms",
+                  }}
+                  onMouseEnter={(e) => ((e.target as HTMLAnchorElement).style.opacity = "1")}
+                  onMouseLeave={(e) => ((e.target as HTMLAnchorElement).style.opacity = "0.6")}
+                >
                   {SOCIAL_LABELS[key] || key}
                 </a>
               ))}

@@ -1,7 +1,8 @@
+/* Hallmark · macrostructure: Photographic · genre: editorial
+ * section: Collections lookbook spread (asymmetric, full-bleed)
+ * replaces: 3-card banner-grid (audit critical: 3-column feature grid)
+ */
 "use client";
-
-import { useRef } from "react";
-import { motion, useInView, useReducedMotion } from "framer-motion";
 
 interface CollectionsBannerGridProps {
   content: {
@@ -15,118 +16,211 @@ interface CollectionsBannerGridProps {
       eyebrow?: string;
       subtitle?: string;
       image?: string;
-      itemCount?: number;
-      cta?: { text: string; url: string };
       featured?: boolean;
+      cta?: { text: string; url: string };
     }>;
   };
   eyebrow?: string;
   subtitle?: string;
-  borderless?: boolean;
 }
 
-const premiumEase = [0.16, 1, 0.3, 1] as const;
+const LAYOUTS = [
+  { image: "1 / span 8", caption: "9 / span 4", stack: "row" as const },
+  { image: "5 / span 8", caption: "1 / span 4", stack: "row-reverse" as const },
+  { image: "2 / span 10", caption: "5 / span 7", stack: "below" as const },
+];
 
-export default function CollectionsBannerGrid({ content, borderless }: CollectionsBannerGridProps) {
+export default function CollectionsBannerGrid({ content }: CollectionsBannerGridProps) {
   const { headline, description, collections } = content;
-  const gridRef = useRef<HTMLDivElement>(null);
-  const gridInView = useInView(gridRef, { once: true, amount: 0.15 });
-  const reducedMotion = useReducedMotion();
 
   return (
-    <section className="section-y">
-      <div className="page-container">
-        <motion.div
-          className="text-center mb-10"
-          initial={reducedMotion ? undefined : { opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.3 }}
-          transition={{ duration: 0.6, ease: premiumEase }}
+    <section
+      id="collections"
+      style={{
+        background: "var(--color-surface)",
+        padding: "clamp(5rem, 10vw, 9rem) 0 clamp(5rem, 10vw, 9rem)",
+        overflow: "hidden",
+      }}
+    >
+      <div
+        style={{
+          maxWidth: "1400px",
+          margin: "0 auto",
+          padding: "0 clamp(1.5rem, 6vw, 4rem)",
+          marginBottom: "clamp(4rem, 8vw, 7rem)",
+        }}
+      >
+        <h2
+          style={{
+            fontFamily: "var(--font-display)",
+            fontSize: "clamp(2.5rem, 5vw, 4.5rem)",
+            lineHeight: 1.05,
+            letterSpacing: "-0.015em",
+            color: "var(--color-primary)",
+            fontWeight: 400,
+            margin: 0,
+            maxWidth: "16ch",
+          }}
         >
-          <h2 className="font-[family-name:var(--font-display)] text-3xl md:text-4xl font-bold text-foreground">
-            {headline}
-          </h2>
-          {description && (
-            <p className="mt-3 text-muted-foreground max-w-2xl mx-auto text-base">
-              {description}
-            </p>
-          )}
-        </motion.div>
+          {headline}
+        </h2>
+        {description && (
+          <p
+            style={{
+              fontFamily: "var(--font-sans)",
+              fontSize: "1rem",
+              lineHeight: 1.7,
+              color: "var(--color-secondary)",
+              fontWeight: 300,
+              margin: "1.75rem 0 0",
+              maxWidth: "44ch",
+            }}
+          >
+            {description}
+          </p>
+        )}
+      </div>
 
-        <div ref={gridRef} className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          {collections.map((col, i) => (
-            <motion.div
+      <div style={{ display: "flex", flexDirection: "column", gap: "clamp(6rem, 12vw, 10rem)" }}>
+        {collections.map((col, i) => {
+          const layout = LAYOUTS[i % LAYOUTS.length];
+          const num = String(i + 1).padStart(2, "0");
+          const isBelow = layout.stack === "below";
+
+          return (
+            <article
               key={i}
-              initial={reducedMotion ? undefined : { opacity: 0, y: 40, scale: 0.95 }}
-              animate={gridInView ? { opacity: 1, y: 0, scale: 1 } : undefined}
-              transition={{
-                duration: 0.6,
-                ease: premiumEase,
-                delay: i * 0.15,
+              className="collection-spread"
+              style={{
+                maxWidth: "1400px",
+                margin: "0 auto",
+                padding: "0 clamp(1.5rem, 6vw, 4rem)",
+                display: "grid",
+                gridTemplateColumns: "repeat(12, minmax(0, 1fr))",
+                gap: "clamp(1.5rem, 3vw, 2.5rem)",
+                alignItems: "center",
+                width: "100%",
+                boxSizing: "border-box",
               }}
-              whileHover={reducedMotion ? undefined : {
-                y: -4,
-                boxShadow: "0 12px 40px rgba(0,0,0,0.15)",
-                transition: { duration: 0.3, ease: "easeOut" },
-              }}
-              className={`group relative overflow-hidden ${borderless ? "rounded-none" : "rounded-[var(--radius-lg)]"} ${
-                col.featured ? "md:col-span-2" : ""
-              }`}
             >
               <div
-                className={`relative w-full overflow-hidden bg-muted ${
-                  col.featured ? "aspect-[2/1]" : "aspect-[4/3]"
-                }`}
+                className="collection-image"
+                style={{
+                  gridColumn: layout.image,
+                  aspectRatio: isBelow ? "16 / 9" : "4 / 5",
+                  position: "relative",
+                  overflow: "hidden",
+                  background: "color-mix(in oklch, var(--color-primary) 8%, var(--color-surface))",
+                }}
               >
-                {col.image ? (
+                {col.image && (
                   <img
                     src={col.image}
                     alt={col.name}
-                    className="w-full h-full object-cover transition-transform duration-[var(--duration-slower)] group-hover:scale-105"
+                    loading="lazy"
+                    style={{
+                      position: "absolute",
+                      inset: 0,
+                      width: "100%",
+                      height: "100%",
+                      objectFit: "cover",
+                    }}
                     onError={(e) => { (e.target as HTMLImageElement).style.visibility = "hidden"; }}
                   />
-                ) : (
-                  <div className="w-full h-full bg-muted" />
                 )}
-
-                {/* eslint-disable-next-line no-restricted-syntax -- photo overlay: gradient scrim over banner image */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
-
-                <div className="absolute bottom-0 left-0 p-5 w-full">
-                  <div className="flex items-end justify-between gap-4">
-                    <div>
-                      {/* eslint-disable-next-line no-restricted-syntax -- photo overlay: headline on darkened banner image */}
-                      <h3 className="font-[family-name:var(--font-display)] font-bold text-white text-xl md:text-2xl leading-tight">
-                        {col.name}
-                      </h3>
-                      {col.description && (
-                        // eslint-disable-next-line no-restricted-syntax -- photo overlay: description on darkened banner image
-                        <p className="text-white/80 text-sm mt-1 line-clamp-2">
-                          {col.description}
-                        </p>
-                      )}
-                      {col.itemCount !== undefined && (
-                        // eslint-disable-next-line no-restricted-syntax -- photo overlay: count pill on darkened banner image
-                        <span className="inline-block mt-2 text-xs text-white/70 bg-white/10 border border-white/20 px-2 py-0.5 rounded-full">
-                          {col.itemCount} items
-                        </span>
-                      )}
-                    </div>
-                    {col.cta && (
-                      <a
-                        href={col.cta.url}
-                        className="shrink-0 opacity-0 translate-y-2 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-[var(--duration-slow)] bg-[var(--color-primary)] text-[var(--color-on-primary)] text-sm font-medium px-4 py-2 rounded-[var(--radius-sm)] whitespace-nowrap"
-                      >
-                        {col.cta.text}
-                      </a>
-                    )}
-                  </div>
-                </div>
               </div>
-            </motion.div>
-          ))}
-        </div>
+
+              <div
+                className="collection-caption"
+                style={{
+                  gridColumn: layout.caption,
+                  marginTop: isBelow ? "clamp(2rem, 4vw, 3rem)" : 0,
+                }}
+              >
+                <p
+                  style={{
+                    fontFamily: "var(--font-sans)",
+                    fontSize: "0.7rem",
+                    letterSpacing: "0.24em",
+                    color: "var(--color-primary)",
+                    opacity: 0.45,
+                    margin: 0,
+                    fontWeight: 500,
+                  }}
+                >
+                  No. {num}
+                </p>
+                <h3
+                  style={{
+                    fontFamily: "var(--font-display)",
+                    fontSize: "clamp(1.75rem, 2.8vw, 2.5rem)",
+                    lineHeight: 1.1,
+                    letterSpacing: "-0.01em",
+                    color: "var(--color-primary)",
+                    fontWeight: 400,
+                    margin: "0.75rem 0 0",
+                  }}
+                >
+                  {col.name}
+                </h3>
+                {col.description && (
+                  <p
+                    style={{
+                      fontFamily: "var(--font-sans)",
+                      fontSize: "0.95rem",
+                      lineHeight: 1.75,
+                      color: "var(--color-secondary)",
+                      fontWeight: 300,
+                      margin: "1.25rem 0 0",
+                      maxWidth: "42ch",
+                    }}
+                  >
+                    {col.description}
+                  </p>
+                )}
+                {col.cta && (
+                  <a
+                    href={col.cta.url}
+                    style={{
+                      display: "inline-block",
+                      fontFamily: "var(--font-sans)",
+                      fontSize: "0.75rem",
+                      letterSpacing: "0.16em",
+                      textTransform: "uppercase",
+                      color: "var(--color-primary)",
+                      borderBottom: "1px solid var(--color-primary)",
+                      paddingBottom: "2px",
+                      marginTop: "2rem",
+                      textDecoration: "none",
+                      opacity: 0.8,
+                      transition: "opacity 200ms",
+                      whiteSpace: "nowrap",
+                    }}
+                    onMouseEnter={(e) => ((e.target as HTMLAnchorElement).style.opacity = "1")}
+                    onMouseLeave={(e) => ((e.target as HTMLAnchorElement).style.opacity = "0.8")}
+                  >
+                    {col.cta.text}
+                  </a>
+                )}
+              </div>
+            </article>
+          );
+        })}
       </div>
+
+      <style>{`
+        @media (max-width: 768px) {
+          .collection-spread {
+            grid-template-columns: 1fr !important;
+            gap: 1.5rem !important;
+          }
+          .collection-spread .collection-image,
+          .collection-spread .collection-caption {
+            grid-column: 1 / -1 !important;
+            margin-top: 0 !important;
+          }
+        }
+      `}</style>
     </section>
   );
 }

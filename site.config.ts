@@ -7,9 +7,9 @@ const config: SiteConfig = {
     tagline: "Where heritage meets haute couture",
     description:
       "A boutique fashion house specializing in handloom sarees, contemporary ethnic wear, and bridal couture — sourced directly from master weavers across India.",
-    phone: "+91 91000 00000",
-    email: "hello@laharicollections.com",
-    address: "Jubilee Hills, Road No. 36",
+    phone: "",
+    email: "",
+    address: "Road No. 36, Jubilee Hills",
     city: "Hyderabad",
     state: "Telangana",
     pincode: "500033",
@@ -34,10 +34,9 @@ const config: SiteConfig = {
   },
 
   hero: {
-    style: "carousel",
+    style: "image-bg",
     headline: "Lahari Collections",
     subheadline: "Handloom sarees and bridal couture from India's master weavers",
-    eyebrow: "Hyderabad",
     cta: {
       text: "View the Collections",
       url: "#collections",
@@ -47,12 +46,7 @@ const config: SiteConfig = {
       text: "The Atelier",
       url: "#about",
     },
-    images: [
-      { src: "/images/hero-bg.jpg", alt: "Bridal handloom saree", focalPoint: "center 30%" },
-      { src: "/images/collection-bridal.jpg", alt: "Bridal Banarasi", focalPoint: "center center" },
-      { src: "/images/collection-heritage.jpg", alt: "Heritage weave detail", focalPoint: "center center" },
-      { src: "/images/craft-parallax.jpg", alt: "Loom craft", focalPoint: "center center" },
-    ],
+    image: "/images/hero-bg.jpg",
   },
 
   sections: [
@@ -60,7 +54,6 @@ const config: SiteConfig = {
       type: "about",
       variant: "editorial-split",
       navLabel: null,
-      eyebrow: "The Craft",
       content: {
         headline: "From the loom\nto the light",
         description:
@@ -70,8 +63,8 @@ const config: SiteConfig = {
         image: "/images/weaver-craft.jpg",
         imagePosition: "center 30%",
         cta: {
-          text: "Discover the Process",
-          url: "#cta",
+          text: "Visit the Atelier",
+          url: "#contact",
         },
       },
     },
@@ -102,55 +95,20 @@ const config: SiteConfig = {
             description:
               "Zari-heavy Banarasis, Kanjeevaram reds, custom trousseau sets. Made for the day and the decades after.",
             image: "/images/collection-bridal.jpg",
-            featured: true,
             cta: { text: "View Bridal", url: "#" },
           },
         ],
       },
     },
     {
-      type: "cta",
-      variant: "banner",
-      navLabel: null,
-      content: {
-        headline: "Worn, Not Displayed",
-        description:
-          "India's finest textiles belong in your life, not behind glass.",
-        image: "/images/craft-parallax.jpg",
-        cta: {
-          text: "Visit the Atelier",
-          url: "#about",
-        },
-      },
-    },
-    {
-      type: "about",
-      variant: "story",
-      navLabel: "About",
-      eyebrow: "Est. 2024, Hyderabad",
-      content: {
-        headline: "The Atelier",
-        description:
-          "Lahari started with one question: why does India's finest handloom end up in archives instead of wardrobes? We work with weaving families across six states. Their craft becomes clothing you reach for on your best days and your quietest ones.",
-        stats: [
-          { value: "6", label: "States sourced from" },
-          { value: "40+", label: "Artisan families" },
-          { value: "100%", label: "Handloom" },
-        ],
-      },
-    },
-    {
       type: "contact",
       variant: "split-info",
-      navLabel: "Contact",
+      navLabel: "Visit",
       content: {
-        headline: "Find Us",
+        headline: "By Appointment",
         description:
-          "Walk in, write to us, or call ahead for a private viewing. The atelier is open six days a week.",
-        phone: "+91 91000 00000",
-        email: "hello@laharicollections.com",
+          "Walk in, or write ahead for a private viewing. The atelier is open six days a week.",
         address: "Road No. 36, Jubilee Hills, Hyderabad 500033",
-        submitText: "Send Message",
       },
     },
   ],
@@ -177,13 +135,13 @@ const config: SiteConfig = {
 
   nav: {
     style: "sticky",
-    ctaButton: "Explore Collection",
-    ctaHref: "#collections",
+    ctaButton: "Visit",
+    ctaHref: "#contact",
   },
 
   footer: {
     variant: "editorial-dark",
-    includeNewsletter: true,
+    includeNewsletter: false,
   },
 };
 
